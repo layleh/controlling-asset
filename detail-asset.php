@@ -5,13 +5,13 @@
         echo '<script>window.location="login.php"</script>';
     }
 
-    $nip_data = $_GET['nip'];
-    $data_karyawan = mysqli_query($conn, "SELECT * FROM tb_pendataan WHERE nip = '".$nip_data."' ");
+    $kode_alat = $_GET['kode_sn'];
+    $data_alat = mysqli_query($conn, "SELECT * FROM tb_alat WHERE alat = '".$kode_alat."' ");
 
-    $p = mysqli_fetch_object($data_karyawan);
+    $p = mysqli_fetch_object($data_alat);
 
     if(isset($_POST['update'])){
-        $query = "UPDATE `tb_pendataan` SET nama='$_POST[nama]', jabatan='$_POST[jabatan]', alamat='$_POST[alamat]', no_hp='$_POST[no_hp]', email='$_POST[email]' WHERE nip='$nip_data'";
+        $query = "UPDATE `tb_alat` SET alat='$_POST[alat]', jenis='$_POST[jenis]', berakhir='$_POST[berakhir]', baru='$_POST[baru]', WHERE kode_sn='$kode_alat'";
         $query_run = mysqli_query($conn, $query);
 
         if($query_run){
@@ -40,7 +40,7 @@
             <h1><a href="beranda.php"> Admin Controlling Asset </a></h1>
             <ul>
                 <li><a href="beranda.php">Beranda</a></li>
-                <li><a href="data-karyawan.php">Data Asset</a></li>
+                <li><a href="data-asset.php">Data Asset</a></li>
                 <li<a href="#input-data.php">Input Data Baru</a></li>
                 <li><a href="keluar.php">Keluar</a></li>
                 
@@ -51,38 +51,38 @@
         <section class="content">
             <h2>Edit Data Alat</h2>
             <div class="box">
-                <table class ="table-data" borde="0">
+                <table class ="table-data" border="0">
                     <tr>
                         <td>Nama Alat</td>
                         <td>: </td>
                         <td></td>
-                        <td><?php echo $p->nama ?></td>
+                        <td><?php echo $p->alat ?></td>
                     </tr><br>
                     <tr>
                         <td>Jenis Alat</td>
                         <td>: </td>
                         <td></td>
-                        <td><?php echo $p->nip ?></td>
+                        <td><?php echo $p->kode_alat ?></td>
                     </tr>
                     <tr>
                         <td>Kalibrasi Terakhir</td>
                         <td>: </td>
                         <td></td>
-                        <td><?php echo $p->jabatan ?></td>
+                        <td><?php echo $p->berakhir ?></td>
                     <tr>
                         <td>Kalibrasi Selanjutnya</td>
                         <td>: </td>
                         <td></td>
-                        <td><?php echo $p->alamat ?></td>
+                        <td><?php echo $p->baru ?></td>
                     </tr>
                 </table>
                 <br>
                 <center>
                     <form action="" method="POST">
-                        <input type="text" name="nama" placeholder="Masukkan Nama Alat"/><br>
-                        <input type="text" name="jabatan" placeholder="Masukkan Jenis Alat"/><br>
-                        <input type="text" name="alamat" placeholder="Masukkan Kalibrasi Terakhir"/><br>
-                        <input type="text" name="no_hp" placeholder="Masukkan Kalibrasi Selanjutnya"/><br>
+                        <input type="text" name="alat" placeholder="Masukkan Nama Alat"/><br>
+                        <input type="text" name="jenis" placeholder="Masukkan Jenis Alat"/><br>
+                        <input type="text" name="berakhir" placeholder="Masukkan Kalibrasi Terakhir"/><br>
+                        <input type="text" name="baru" placeholder="Masukkan Kalibrasi Selanjutnya"/><br>
 
                         <input type="submit" name="update" value="UPDATE DATA" class="button"/>
                     </form>
