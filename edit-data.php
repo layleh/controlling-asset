@@ -5,8 +5,8 @@
         echo '<script>window.location="login.php"</script>';
     }
 
-    $nip_data = $_GET['nip'];
-    $data_karyawan = mysqli_query($conn, "SELECT * FROM tb_pendataan WHERE nip = '".$nip_data."' ");
+    $kode_alat = $_GET['kode_sn'];
+    $data_karyawan = mysqli_query($conn, "SELECT * FROM tb_alat WHERE nip = '".$kode_alat."' ");
 
     $p = mysqli_fetch_object($data_karyawan);
 
