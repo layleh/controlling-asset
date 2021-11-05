@@ -49,20 +49,20 @@
                         <?php
                             $no = 1;
                             $list_data = mysqli_query($conn, "SELECT * FROM 
-                                tb_pendataan");
+                                tb_alat");
                             
                             while ($row = mysqli_fetch_array($list_data)){
                         ?>
                         <tr>
                             <td><?php echo $no++ ?></td>
-                            <td><?php echo $row['nama'] ?></td>
-                            <td><?php echo $row['nip'] ?></td>
-                            <td><?php echo $row['jabatan'] ?></td>
-                            <td><?php echo $row['alamat'] ?></td>
+                            <td><?php echo $row['alat'] ?></td>
+                            <td><?php echo $row['jenis'] ?></td>
+                            <td><?php echo $row['berakhir'] ?></td>
+                            <td><?php echo $row['baru'] ?></td>
                             <td id="bebas">
-                                <a href="detail-asset.php?nip=<?php echo $row['nip'] ?>" id="dtl"> Detail </a>
-                                <a href="edit-data.php?nip=<?php echo $row['nip'] ?>" id="edt"> Edit </a> 
-                                <a href="hapus-data.php?nip=<?php echo $row['nip']
+                                <a href="detail-asset.php?nip=<?php echo $row['kode_alat'] ?>" id="dtl"> Detail </a>
+                                <a href="edit-data.php?nip=<?php echo $row['kode_alat'] ?>" id="edt"> Edit </a> 
+                                <a href="hapus-data.php?nip=<?php echo $row['kode_alat']
                                 ?>" onclick="return confirm('Yakin data akan dihapus?')" id="hps"> Hapus </a>
                                 
                             </td>
