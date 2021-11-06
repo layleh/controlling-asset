@@ -55,14 +55,14 @@
                         ?>
                         <tr>
                             <td><?php echo $no++ ?></td>
-                            <td><?php echo $row['alat'] ?></td>
+                            <td><?php echo $row['nama'] ?></td>
                             <td><?php echo $row['jenis'] ?></td>
                             <td><?php echo $row['berakhir'] ?></td>
                             <td><?php echo $row['baru'] ?></td>
                             <td id="bebas">
-                                <a href="detail-asset.php?nip=<?php echo $row['kode_alat'] ?>" id="dtl"> Detail </a>
-                                <a href="edit-data.php?nip=<?php echo $row['kode_alat'] ?>" id="edt"> Edit </a> 
-                                <a href="hapus-data.php?nip=<?php echo $row['kode_alat']
+                                <a href="detail-asset.php?nip=<?php echo $row['kode'] ?>" id="dtl"> Detail </a>
+                                <a href="edit-data.php?nip=<?php echo $row['kode'] ?>" id="edt"> Edit </a> 
+                                <a href="hapus-data.php?nip=<?php echo $row['kode']
                                 ?>" onclick="return confirm('Yakin data akan dihapus?')" id="hps"> Hapus </a>
                                 
                             </td>
