@@ -5,13 +5,13 @@
         echo '<script>window.location="login.php"</script>';
     }
 
-    $kode_alat = $_GET['kode_sn'];
-    $data_alat = mysqli_query($conn, "SELECT * FROM tb_alat WHERE alat = '".$kode_alat."' ");
+    $kode = $_GET['kode'];
+    $data_alat = mysqli_query($conn, "SELECT * FROM tb_alat WHERE kode = '".$kode."' ");
 
     $p = mysqli_fetch_object($data_alat);
 
     if(isset($_POST['update'])){
-        $query = "UPDATE `tb_alat` SET alat='$_POST[alat]', jenis='$_POST[jenis]', berakhir='$_POST[berakhir]', baru='$_POST[baru]', WHERE kode_sn='$kode_alat'";
+        $query = "UPDATE `tb_alat` SET nama='$_POST[nama]', jenis='$_POST[jenis]', berakhir='$_POST[berakhir]', baru='$_POST[baru]', WHERE kode='$kode'";
         $query_run = mysqli_query($conn, $query);
 
         if($query_run){
@@ -56,13 +56,13 @@
                         <td>Nama Alat</td>
                         <td>: </td>
                         <td></td>
-                        <td><?php echo $p->alat ?></td>
+                        <td><?php echo $p->nama ?></td>
                     </tr><br>
                     <tr>
                         <td>Jenis Alat</td>
                         <td>: </td>
                         <td></td>
-                        <td><?php echo $p->kode_alat ?></td>
+                        <td><?php echo $p->jenis ?></td>
                     </tr>
                     <tr>
                         <td>Kalibrasi Terakhir</td>
@@ -79,7 +79,7 @@
                 <br>
                 <center>
                     <form action="" method="POST">
-                        <input type="text" name="alat" placeholder="Masukkan Nama Alat"/><br>
+                        <input type="text" name="nama" placeholder="Masukkan Nama Alat"/><br>
                         <input type="text" name="jenis" placeholder="Masukkan Jenis Alat"/><br>
                         <input type="text" name="berakhir" placeholder="Masukkan Kalibrasi Terakhir"/><br>
                         <input type="text" name="baru" placeholder="Masukkan Kalibrasi Selanjutnya"/><br>
