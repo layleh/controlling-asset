@@ -36,7 +36,8 @@ def database():
 
         # buat table alat
         tb_alat = """CREATE TABLE IF NOT EXISTS tb_alat(
-            alat VARCHAR(50) PRIMARY KEY,
+            kode VARCHAR(50) PRIMARY KEY,
+            alat VARCHAR(50),
             jenis VARCHAR(30),
             berakhir DATE,
             baru DATE
