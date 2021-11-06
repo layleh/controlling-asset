@@ -60,9 +60,9 @@
                             <td><?php echo $row['berakhir'] ?></td>
                             <td><?php echo $row['baru'] ?></td>
                             <td id="bebas">
-                                <a href="detail-asset.php?nip=<?php echo $row['kode'] ?>" id="dtl"> Detail </a>
-                                <a href="edit-data.php?nip=<?php echo $row['kode'] ?>" id="edt"> Edit </a> 
-                                <a href="hapus-data.php?nip=<?php echo $row['kode']
+                                <a href="detail-asset.php?kode=<?php echo $row['kode'] ?>" id="dtl"> Detail </a>
+                                <a href="edit-data.php?kode=<?php echo $row['kode'] ?>" id="edt"> Edit </a> 
+                                <a href="hapus-data.php?kode=<?php echo $row['kode']
                                 ?>" onclick="return confirm('Yakin data akan dihapus?')" id="hps"> Hapus </a>
                                 
                             </td>
