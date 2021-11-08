@@ -11,7 +11,7 @@
     $p = mysqli_fetch_object($data_alat);
 
     if(isset($_POST['update'])){
-        $query = "UPDATE `tb_alat` SET nama='$_POST[nama]', jenis='$_POST[jenis]', berakhir='$_POST[berakhir]', baru='$_POST[baru]', WHERE kode='$kode'";
+        $query = "UPDATE `tb_alat` SET nama='$_POST[nama]', jenis='$_POST[jenis]', berakhir='$_POST[berakhir]', baru='$_POST[baru]', WHERE kode_data='$kode'";
         $query_run = mysqli_query($conn, $query);
 
         if($query_run){
@@ -49,7 +49,7 @@
 
         <!-- bagian content -->
         <section class="content">
-            <h2>Edit Data Alat</h2>
+            <h2>Detail Data Alat</h2>
             <div class="box">
                 <table class ="table-data" border="0">
                     <tr>
@@ -58,6 +58,12 @@
                         <td></td>
                         <td><?php echo $p->nama ?></td>
                     </tr><br>
+                    <tr>
+                        <td>Serial No.</td>
+                        <td>: </td>
+                        <td></td>
+                        <td><?php echo $p->kode ?></td>
+                    </tr>
                     <tr>
                         <td>Jenis Alat</td>
                         <td>: </td>
@@ -77,16 +83,6 @@
                     </tr>
                 </table>
                 <br>
-                <center>
-                    <form action="" method="POST">
-                        <input type="text" name="nama" placeholder="Masukkan Nama Alat"/><br>
-                        <input type="text" name="jenis" placeholder="Masukkan Jenis Alat"/><br>
-                        <input type="text" name="berakhir" placeholder="Masukkan Kalibrasi Terakhir"/><br>
-                        <input type="text" name="baru" placeholder="Masukkan Kalibrasi Selanjutnya"/><br>
-
-                        <input type="submit" name="update" value="UPDATE DATA" class="button"/>
-                    </form>
-                </center>
             </div>
         </section>
     </body>
