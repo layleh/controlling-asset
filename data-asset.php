@@ -38,13 +38,14 @@
                         <tr>
                             <th>No.</th>
                             <th>Nama Alat</th>
+                            <th>Serial No.</th>
                             <th>Jenis Alat</th>
                             <th>Kalibrasi Terakhir</th>
                             <th>Jadwal Selanjutnya</th>
                             <th>Aksi</th>
-
                         </tr>
                     </thead>
+                    <a class="tombol" href="edit-data.php">+ Tambah Data Baru</a>
                     <tbody>
                         <?php
                             $no = 1;
@@ -56,6 +57,7 @@
                         <tr>
                             <td><?php echo $no++ ?></td>
                             <td><?php echo $row['nama'] ?></td>
+                            <td><?php echo $row['kode'] ?></td>
                             <td><?php echo $row['jenis'] ?></td>
                             <td><?php echo $row['berakhir'] ?></td>
                             <td><?php echo $row['baru'] ?></td>
@@ -71,6 +73,7 @@
                     </tbody>
                 </table>
             </div>
+        
         </section>
     </body>
 </html>
