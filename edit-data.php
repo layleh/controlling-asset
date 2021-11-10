@@ -41,7 +41,7 @@
             <ul>
                 <li><a href="beranda.php">Beranda</a></li>
                 <li><a href="data-asset.php">Data Asset</a></li>
-                <li<a href="#input-data.php">Input Data Baru</a></li>
+                <li><a href="input-data.php">Input Data Baru</a></li>
                 <li><a href="keluar.php">Keluar</a></li>
                 
             </ul>
@@ -89,15 +89,11 @@
                         <input type="text" name="kode" placeholder="Masukkan Serial No" /><br>
                         <input type="text" name="jenis" placeholder="Masukkan Jenis Alat"/><br>
                     <div class="form-group">
-                            <label>Tanggal Berakhir</label>
-                            <?php $date = date_create($data_edit->berakhir); ?>
-                            <input type="datetime-local" name="berakhir" class="form-control" min="<?= date_format($date, 'Y-m-d\TH:i'); ?>" value='<?= date_format($date, 'Y-m-d\TH:i'); ?>' required>  
+                            <input type="date" name="baru" class="input-control">  
                     </div>
 
                     <div class="form-group">
-                            <label>Tanggal Selanjutnya</label>
-                            <?php $date = date_create($data_edit->baru); ?>
-                            <input type="datetime-local" name="baru" min="<?= date_format($date, 'Y-m-d\TH:i'); ?>" class="form-control" value='<?= date_format($date, 'Y-m-d\TH:i'); ?>' required> 
+                            <input type="date" name="baru" class="input-control">
                     </div>
 
                         <input type="submit" name="update" value="UPDATE DATA" class="button"/>
