@@ -78,7 +78,7 @@ input{
     box-shadow: 1px 1px 2px 1px grey;
 }
 
-.button{
+.btn-update{
     border: none;
     outline: none;
     height: 40px;
@@ -87,7 +87,22 @@ input{
     border-radius: 20px;
 }
 
-.button:hover{
+.btn-update:hover{
+    cursor: pointer;
+    background-color: #e33d56;
+    color: #fff;
+}
+
+.btn-input{
+    border: none;
+    outline: none;
+    height: 40px;
+    background-color: #1c8adb;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.btn-input:hover{
     cursor: pointer;
     background-color: #e33d56;
     color: #fff;
