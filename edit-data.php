@@ -5,22 +5,24 @@
         echo '<script>window.location="login.php"</script>';
     }
 
-    $kode = $_GET['kode'];
-    $data_alat = mysqli_query($conn, "SELECT * FROM tb_alat WHERE kode = '".$kode."' ");
+    $kode_data = $_GET['kode'];
+    $data_alat = mysqli_query($conn, "SELECT * FROM tb_alat WHERE kode = '".$kode_data."' ");
 
     $p = mysqli_fetch_object($data_alat);
 
     if(isset($_POST['update'])){
-        $query = "UPDATE `tb_alat` SET nama='$_POST[nama]', jenis='$_POST[jenis]', berakhir='$_POST[berakhir]', baru='$_POST[baru]', WHERE kode_data='$kode'";
+        $query = "UPDATE `tb_alat` SET nama='$_POST[nama]', jenis='$_POST[jenis]', berakhir='$_POST[berakhir]', baru='$_POST[baru]' WHERE kode='$kode_data'";
+
         $query_run = mysqli_query($conn, $query);
 
         if($query_run){
             echo '<script type="text/javascript"> alert("Data Update") </script>';
             echo '<script>window.location="data-asset.php"</script>';
         }
+        /*
         else{
-            echo '<script type="text/javascript"> alert("Data Not Update") </script>';
-        }
+            echo '<script type="text/javascript"> alert("Data Not Update") </script>'; 
+        } */
     }
 ?>
 
@@ -85,15 +87,13 @@
                 <br>
                 <center>
                     <form action="" method="POST">
-                        <input type="text" name="alat" placeholder="Masukkan Nama Alat"/><br>
-                        <input type="text" name="kode" placeholder="Masukkan Serial No" /><br>
+                        <input type="text" name="nama" placeholder="Masukkan Nama Alat"/><br>
                         <input type="text" name="jenis" placeholder="Masukkan Jenis Alat"/><br>
                     <div class="form-group">
-                            <input type="date" name="baru" class="input-control">  
+                        <input type="date" name="berakhir" class="input-control">  
                     </div>
-
                     <div class="form-group">
-                            <input type="date" name="baru" class="input-control">
+                        <input type="date" name="baru" class="input-control">
                     </div>
 
                         <input type="submit" name="update" value="UPDATE DATA" class="button"/>
