@@ -7,7 +7,7 @@
 
     if(isset($_POST['submit'])){
         $kode = $_POST['kode'];
-        $nama = $_POST['nama'];
+        $nama = $_POST['alat'];
         $jenis = $_POST['jenis'];
         $berakhir = $_POST['berakhir'];
         $baru = $_POST['baru'];
@@ -26,6 +26,20 @@
         }
         elseif(empty($baru)){
             echo '<script type="text/javascript"> alert("Tanggal Baru Tidak Boleh Kosong") </script>';
+        }
+        else{
+            $query = "INSERT INTO tb_alat (kode, alat, jenis, berakhir, baru) VALUES ('$kode', '$nama', '$jenis', '$berakhir', '$baru')";
+
+            $check = mysqli_query($conn, $query);
+
+            if($check){
+                echo '<script type="text/javascript"> alert("Data Berhasil Di Input") </script>';
+                echo '<script>window.location="data-asset.php"</script>';
+            }
+            else{
+                echo '<script type="text/javascript"> alert("Data Gagal Di Input") </script>';
+            }
+
         }
     }
 ?>
