@@ -11,7 +11,7 @@
     $p = mysqli_fetch_object($data_alat);
 
     if(isset($_POST['update'])){
-        $query = "UPDATE `tb_alat` SET nama='$_POST[nama]', jenis='$_POST[jenis]', berakhir='$_POST[berakhir]', baru='$_POST[baru]', WHERE kode_data='$kode'";
+        $query = "UPDATE `tb_alat` SET nama='$_POST[nama]', vendor='$_POST[vendor]', jenis='$_POST[jenis]', keterangan='$_POST[keterangan]', berakhir='$_POST[berakhir]', baru='$_POST[baru]', WHERE kode_data='$kode'";
         $query_run = mysqli_query($conn, $query);
 
         if($query_run){
@@ -41,7 +41,6 @@
             <ul>
                 <li><a href="beranda.php">Beranda</a></li>
                 <li><a href="data-asset.php">Data Asset</a></li>
-                <li<a href="#input-data.php">Input Data Baru</a></li>
                 <li><a href="keluar.php">Keluar</a></li>
                 
             </ul>
@@ -59,6 +58,12 @@
                         <td><?php echo $p->nama ?></td>
                     </tr><br>
                     <tr>
+                        <td>Vendor</td>
+                        <td>: </td>
+                        <td></td>
+                        <td><?php echo $p->vendor ?></td>
+                    </tr>
+                    <tr>
                         <td>Serial No.</td>
                         <td>: </td>
                         <td></td>
@@ -69,6 +74,12 @@
                         <td>: </td>
                         <td></td>
                         <td><?php echo $p->jenis ?></td>
+                    </tr>
+                    <tr>
+                        <td>Keterangan</td>
+                        <td>: </td>
+                        <td></td>
+                        <td><?php echo $p->keterangan ?></td>
                     </tr>
                     <tr>
                         <td>Kalibrasi Terakhir</td>
