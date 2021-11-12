@@ -7,7 +7,7 @@
 
     if(isset($_POST['submit'])){
         $kode = $_POST['kode'];
-        $nama = $_POST['alat'];
+        $nama = $_POST['nama'];
         $jenis = $_POST['jenis'];
         $berakhir = $_POST['berakhir'];
         $baru = $_POST['baru'];
@@ -28,7 +28,7 @@
             echo '<script type="text/javascript"> alert("Tanggal Baru Tidak Boleh Kosong") </script>';
         }
         else{
-            $query = "INSERT INTO tb_alat (kode, alat, jenis, berakhir, baru) VALUES ('$kode', '$nama', '$jenis', '$berakhir', '$baru')";
+            $query = "INSERT INTO tb_alat (kode, nama, jenis, berakhir, baru) VALUES ('$kode', '$nama', '$jenis', '$berakhir', '$baru')";
 
             $check = mysqli_query($conn, $query);
 
@@ -39,7 +39,6 @@
             else{
                 echo '<script type="text/javascript"> alert("Data Gagal Di Input") </script>';
             }
-
         }
     }
 ?>
@@ -72,16 +71,19 @@
             <div class="box">
                 <center>
                     <form action="" method="POST">
-                        <pre class="nama-alat"> Nama Alat : </pre>
-                        <input type="text" name="alat" placeholder="Masukkan Nama Alat"/>
-                        <br>
+                        
+                        <td>Nama Alat :</td>
+                        <input type="text" name="kode" placeholder="Masukkan Nama Alat" /><br>
                         <td>Serial No :</td>
                         <input type="text" name="kode" placeholder="Masukkan Serial No" /><br>
                         <td>Jenis Alat :</td>
                         <input type="text" name="jenis" placeholder="Masukkan Jenis Alat"/><br>
+                        <td>Kalibrasi Berakhir :</td>
                         <input type="date" name="berakhir" placeholder="Masukkan Tanggal Kalibrasi Berakhir" class="input-control"><br>
+                        <td>Kalibrasi Selanjutnya :</td>
                         <input type="date" name="baru" placeholder="Masukkan Tanggal Kalibrasi Baru" class="input-control"><br>
-                        <input type="submit" name="update" value="INPUT DATA" class="button-input"/>
+                        
+                        <input type="submit" name="submit" value="INPUT DATA" class="button-input"/>
                     </form>
                 </center>
             </div>
