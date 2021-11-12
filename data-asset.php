@@ -23,7 +23,6 @@
             <ul>
                 <li><a href="beranda.php">Beranda</a></li>
                 <li><a href="data-asset.php">Data Asset</a></li>
-                <li<a href="#input-data.php">Input Data Baru</a></li>
                 <li><a href="keluar.php">Keluar</a></li>
                 
             </ul>
@@ -38,14 +37,16 @@
                         <tr>
                             <th>No.</th>
                             <th>Nama Alat</th>
+                            <th>Vendor</th>
                             <th>Serial No.</th>
                             <th>Jenis Alat</th>
+                            <th>Keterangan</th>
                             <th>Kalibrasi Terakhir</th>
                             <th>Jadwal Selanjutnya</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                    <a class="tombol" href="edit-data.php">+ Tambah Data Baru</a>
+                    <a class="tombol" href="input-data.php">+ Tambah Data Baru</a>
                     <tbody>
                         <?php
                             $no = 1;
@@ -57,8 +58,10 @@
                         <tr>
                             <td><?php echo $no++ ?></td>
                             <td><?php echo $row['nama'] ?></td>
+                            <td><?php echo $row['vendor'] ?></td>
                             <td><?php echo $row['kode'] ?></td>
                             <td><?php echo $row['jenis'] ?></td>
+                            <td><?php echo $row['keterangan'] ?></td>
                             <td><?php echo $row['berakhir'] ?></td>
                             <td><?php echo $row['baru'] ?></td>
                             <td id="bebas">
