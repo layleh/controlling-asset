@@ -8,7 +8,9 @@
     if(isset($_POST['submit'])){
         $kode = $_POST['kode'];
         $nama = $_POST['nama'];
+        $vendor = $_POST['vendor']
         $jenis = $_POST['jenis'];
+        $keterangan = $_POST['keterangan']
         $berakhir = $_POST['berakhir'];
         $baru = $_POST['baru'];
 
@@ -18,8 +20,14 @@
         elseif(empty($kode)){
             echo '<script type="text/javascript"> alert("Kode Tidak Boleh Kosong") </script>';
         }
+        elseif(empty($vendor)){
+            echo '<script type="text/javascript"> alert("Vendor Tidak Boleh Kosong") </script>';
+        }
         elseif(empty($jenis)){
             echo '<script type="text/javascript"> alert("Jenis Tidak Boleh Kosong") </script>';
+        }
+        elseif(empty($keterangan)){
+            echo '<script type="text/javascript"> alert("Keterangan Tidak Boleh Kosong") </script>';
         }
         elseif(empty($berakhir)){
             echo '<script type="text/javascript"> alert("Tanggal Berakhir Tidak Boleh Kosong") </script>';
@@ -28,7 +36,7 @@
             echo '<script type="text/javascript"> alert("Tanggal Baru Tidak Boleh Kosong") </script>';
         }
         else{
-            $query = "INSERT INTO tb_alat (kode, nama, jenis, berakhir, baru) VALUES ('$kode', '$nama', '$jenis', '$berakhir', '$baru')";
+            $query = "INSERT INTO tb_alat (kode, nama, jenis, berakhir, baru) VALUES ('$kode', '$nama', '$vendor', '$jenis', '$keterangan', '$berakhir', '$baru')";
 
             $check = mysqli_query($conn, $query);
 
@@ -74,10 +82,14 @@
                         
                         <td>Nama Alat :</td>
                         <input type="text" name="kode" placeholder="Masukkan Nama Alat" /><br>
+                        <td>Vendor :</td>
+                        <input type="text" name="vendor" placeholder="Masukkan Nama Vendor" /><br>
                         <td>Serial No :</td>
                         <input type="text" name="kode" placeholder="Masukkan Serial No" /><br>
                         <td>Jenis Alat :</td>
                         <input type="text" name="jenis" placeholder="Masukkan Jenis Alat"/><br>
+                        <td>Keterangan Alat :</td>
+                        <input type="text" name="keterangan" placeholder="Masukkan Keterangan Alat" /><br>
                         <td>Kalibrasi Berakhir :</td>
                         <input type="date" name="berakhir" placeholder="Masukkan Tanggal Kalibrasi Berakhir" class="input-control"><br>
                         <td>Kalibrasi Selanjutnya :</td>
