@@ -96,6 +96,14 @@
                         <td></td>
                         <td><?php echo $p->baru ?></td>
                     </tr>
+                    <tr>
+                        <td>Foto</td>
+                        <td>: </td>
+                        <td></td>
+                        <td>
+                            <img src="uploads/<?php echo $p->foto ?>" width="100">
+                        </td>
+                    </tr>
                 </table>
                 <br>
                 <center>
