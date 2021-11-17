@@ -43,6 +43,7 @@
                             <th>Keterangan</th>
                             <th>Kalibrasi Terakhir</th>
                             <th>Jadwal Selanjutnya</th>
+                            <th>Foto</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -64,6 +65,9 @@
                             <td><?php echo $row['keterangan'] ?></td>
                             <td><?php echo $row['berakhir'] ?></td>
                             <td><?php echo $row['baru'] ?></td>
+                            <td>
+                                <img src="uploads/<?php echo $row['foto'] ?>" width="100">
+                            </td>
                             <td id="bebas">
                                 <a href="detail-asset.php?kode=<?php echo $row['kode'] ?>" id="dtl"> Detail </a>
                                 <a href="edit-data.php?kode=<?php echo $row['kode'] ?>" id="edt"> Edit </a> 
