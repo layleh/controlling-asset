@@ -11,7 +11,7 @@
     $p = mysqli_fetch_object($data_alat);
 
     if(isset($_POST['update'])){
-        $query = "UPDATE `tb_alat` SET nama='$_POST[nama]', vendor='$_POST[vendor]', jenis='$_POST[jenis]', keterangan='$_POST[keterangan]', berakhir='$_POST[berakhir]', baru='$_POST[baru]', WHERE kode_data='$kode'";
+        $query = "UPDATE `tb_alat` SET nama='$_POST[nama]', vendor='$_POST[vendor]', jenis='$_POST[jenis]', keterangan='$_POST[keterangan]', berakhir='$_POST[berakhir]', baru='$_POST[baru]', foto='$_POST[foto]', WHERE kode_data='$kode'";
         $query_run = mysqli_query($conn, $query);
 
         if($query_run){
@@ -91,6 +91,14 @@
                         <td>: </td>
                         <td></td>
                         <td><?php echo $p->baru ?></td>
+                    </tr>
+                    <tr>
+                        <td>Foto</td>
+                        <td>: </td>
+                        <td></td>
+                        <td>
+                            <img src="uploads/<?php echo $p->foto ?>" width="100">
+                        </td>
                     </tr>
                 </table>
                 <br>
