@@ -8,11 +8,15 @@
     if(isset($_POST['submit'])){
         $kode = $_POST['kode'];
         $nama = $_POST['nama'];
-        $vendor = $_POST['vendor']
+        $vendor = $_POST['vendor'];
         $jenis = $_POST['jenis'];
-        $keterangan = $_POST['keterangan']
+        $keterangan = $_POST['keterangan'];
         $berakhir = $_POST['berakhir'];
         $baru = $_POST['baru'];
+
+        
+
+        
 
         if(empty($nama)){
             echo '<script type="text/javascript"> alert("Nama Tidak Boleh Kosong") </script>';
@@ -35,8 +39,16 @@
         elseif(empty($baru)){
             echo '<script type="text/javascript"> alert("Tanggal Baru Tidak Boleh Kosong") </script>';
         }
+        
         else{
-            $query = "INSERT INTO tb_alat (kode, nama, jenis, berakhir, baru) VALUES ('$kode', '$nama', '$vendor', '$jenis', '$keterangan', '$berakhir', '$baru')";
+            $namaGambar = $_FILES['file']['name'];
+            //tempat folder
+            $path = $_FILES['file']['tmp_name'];
+            //proses upload
+            move_uploaded_file($path, 'uploads/'.$namaGambar);
+
+            $query = "INSERT INTO tb_alat (kode, nama, vendor, keterangan, jenis, berakhir, baru, foto) VALUES ('$kode', '$nama', '$vendor', '$keterangan', '$jenis', 
+                    '$berakhir', '$baru', '$namaGambar')";
 
             $check = mysqli_query($conn, $query);
 
@@ -78,10 +90,10 @@
             <h2>Input Data Alat Baru</h2>
             <div class="box">
                 <center>
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         
                         <td>Nama Alat :</td>
-                        <input type="text" name="kode" placeholder="Masukkan Nama Alat" /><br>
+                        <input type="text" name="nama" placeholder="Masukkan Nama Alat" /><br>
                         <td>Vendor :</td>
                         <input type="text" name="vendor" placeholder="Masukkan Nama Vendor" /><br>
                         <td>Serial No :</td>
@@ -94,6 +106,8 @@
                         <input type="date" name="berakhir" placeholder="Masukkan Tanggal Kalibrasi Berakhir" class="input-control"><br>
                         <td>Kalibrasi Selanjutnya :</td>
                         <input type="date" name="baru" placeholder="Masukkan Tanggal Kalibrasi Baru" class="input-control"><br>
+                        <td>Upload foto :</td>
+                        <input type="file" name="file" placeholder="Masukkan foto" class="input-control"><br>
                         
                         <input type="submit" name="submit" value="INPUT DATA" class="button-input"/>
                     </form>
