@@ -42,32 +42,54 @@
                             <th>Jenis Alat</th>
                             <th>Keterangan</th>
                             <th>Kalibrasi Terakhir</th>
+                            <th>Status</th>
                             <th>Jadwal Selanjutnya</th>
-                            <th>Foto</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <a class="tombol" href="input-data.php">+ Tambah Data Baru</a>
                     <tbody>
                         <?php
+                            function warna($a){
+                              if ($a == "warning"){
+                                return "style='background-color:rgba(253,238,73,0.3)'";
+                              }
+                              else if($a == "danger"){
+                                return "style='background-color:rgba(214,3,9,0.3)'";
+                              }
+                              return "";
+                            }
                             $no = 1;
                             $list_data = mysqli_query($conn, "SELECT * FROM 
                                 tb_alat");
-                            
+                            $status="";
+                            $type="";
                             while ($row = mysqli_fetch_array($list_data)){
+                              $berakhir = $row['berakhir'];
+                              if ((strtotime(date("Y-m-d"))-strtotime($berakhir))/(3600*24) < 0){
+                                $status= ((strtotime(date("Y-m-d"))-strtotime($berakhir))/(3600*24)*-1)." Day Remainings";
+                                if(((strtotime(date("Y-m-d"))-strtotime($berakhir))/(3600*24)*-1)>90){
+                                  $type="aman";
+                                }
+                                else{
+                                  $type="warning";
+                                }
+                              }
+                              else{
+                                $status= ((strtotime(date("Y-m-d"))-strtotime($berakhir))/(3600*24))." Due Date";
+                                $type="danger";
+                              }
                         ?>
-                        <tr>
-                            <td><?php echo $no++ ?></td>
-                            <td><?php echo $row['nama'] ?></td>
-                            <td><?php echo $row['vendor'] ?></td>
-                            <td><?php echo $row['kode'] ?></td>
-                            <td><?php echo $row['jenis'] ?></td>
-                            <td><?php echo $row['keterangan'] ?></td>
-                            <td><?php echo $row['berakhir'] ?></td>
-                            <td><?php echo $row['baru'] ?></td>
-                            <td>
-                                <img src="uploads/<?php echo $row['foto'] ?>" width="100">
-                            </td>
+                        <tr >
+                            <td ><?php echo $no++ ?></td>
+                            <td <?= warna($type)?>><?php echo $row['nama'] ?></td>
+                            <td <?= warna($type)?>><?php echo $row['vendor'] ?></td>
+                            <td <?= warna($type)?>><?php echo $row['kode'] ?></td>
+                            <td <?= warna($type)?>><?php echo $row['jenis'] ?></td>
+                            <td <?= warna($type)?>><?php echo $row['keterangan'] ?></td>
+                            <td <?= warna($type)?>><?php echo $row['berakhir'] ?></td>
+                            <td <?= warna($type)?>><?php echo $status?></td>
+                            <td <?= warna($type)?>><?php echo $row['baru'] ?></td>
                             <td id="bebas">
                                 <a href="detail-asset.php?kode=<?php echo $row['kode'] ?>" id="dtl"> Detail </a>
                                 <a href="edit-data.php?kode=<?php echo $row['kode'] ?>" id="edt"> Edit </a> 
