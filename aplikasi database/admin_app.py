@@ -1,7 +1,6 @@
-import mysql.connector as db_mysql
+from xampp_initialize import xampp
 from tkinter import *
 from tkinter import messagebox
-import hashlib
 
 def database():
     try:
@@ -15,69 +14,16 @@ def database():
         password = id_pass.get()
 
         # koneksi ke database
-        db = db_mysql.connect(
-            host=host_db,
-            user=user_db,
-            passwd=passwd_db
-        )
-        c = db.cursor()
-
-        c.execute(f"CREATE DATABASE IF NOT EXISTS {nama_db}")
-
-        db.close()
-
-        db1 = db_mysql.connect(
-            host=host_db,
-            user=user_db,
-            passwd=passwd_db,
-            database=nama_db
-        )
-        c1 = db1.cursor() # buat kursor
+        db = xampp(host_db, user_db, passwd_db, nama_db)
+        db.initialize()
 
         # buat table alat
-        tb_alat = """CREATE TABLE IF NOT EXISTS tb_alat(
-            kode VARCHAR(50) PRIMARY KEY,
-            nama VARCHAR(50),
-            vendor VARCHAR(50),
-            jenis VARCHAR(30),
-            keterangan VARCHAR(11),
-            berakhir DATE,
-            baru DATE
-        )
-        """
+        db.create_table()
 
-        # buat table admin
-        tb_admin = """CREATE TABLE IF NOT EXISTS tb_admin(
-            id_admin INT AUTO_INCREMENT PRIMARY KEY,
-            nama_admin VARCHAR(50),
-            username VARCHAR (50) UNIQUE,
-            password VARCHAR(100)
-        )
-        """
-
-        # execute
-        c1.execute(tb_alat)
-        c1.execute(tb_admin)
-
-        bytepass = bytes(password, 'utf-8')
-        hexpass = hashlib.md5(bytepass).hexdigest()
-
-        # Input data ke database
-        sql_adm = "INSERT INTO tb_admin (nama_admin, username, password) VALUES (%s, %s, %s)"
-        val_adm = (nama_admin, username, hexpass)
-
-        # Execute data
-        c1.execute(sql_adm, val_adm)
-
-        # commit
-        db1.commit()
-
-        # Done
-        print(f"{c.rowcount} data ditambah")
-
-        # close
-        db1.close()
-        messagebox.showinfo('Done', 'Data Sudah ditambah')
+        # buat akun baru
+        db.input_new_account(nama_admin, username, password)
+        messagebox.showinfo('Informasi', 'akun berhasil ditambah')
+    
     except:
         messagebox.showerror('Terjadi Kesalahan', 'Harap mengisi localhost, user, password\nIsi username hanya satu kali...')
     
