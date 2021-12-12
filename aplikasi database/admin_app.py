@@ -37,8 +37,10 @@ def database():
         # buat table alat
         tb_alat = """CREATE TABLE IF NOT EXISTS tb_alat(
             kode VARCHAR(50) PRIMARY KEY,
-            alat VARCHAR(50),
+            nama VARCHAR(50),
+            vendor VARCHAR(50),
             jenis VARCHAR(30),
+            keterangan VARCHAR(11),
             berakhir DATE,
             baru DATE
         )
